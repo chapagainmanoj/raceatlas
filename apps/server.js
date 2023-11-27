@@ -7,8 +7,8 @@ const morgan = require('morgan');
 
 require('dotenv').config()
 
-const {startDatabase} = require('./database/mongo');
-const {insertAd, getAds} = require('./database/ads');
+const {startDatabase} = require('../database/mongo');
+const {insertAd, getAds} = require('../database/ads');
 
 
 // defining the Express app
