@@ -5,9 +5,11 @@ const cors = require('cors');
 const helmet = require('helmet');
 const morgan = require('morgan');
 
+
 require('dotenv').config()
 
 const userRouter = require('./user/routes');
+const dbConn = require('../database/conn')
 
 const app = express();
 
@@ -16,7 +18,7 @@ app.use(helmet());
 app.use(bodyParser.json());
 app.use(cors());
 app.use(morgan('combined'));
-
+dbConn();
 
 app.use('/auth', userRouter)
 
