@@ -22,9 +22,9 @@ const UserSchema = new Schema({
       required: 'Username is required',
       trim: true
     },
-    hashed_password: {
+    password: {
       type: String,
-      required: 'Passowrd is required',
+      required: 'Password is required',
     },
     salt: {
       type: String
@@ -38,9 +38,9 @@ const UserSchema = new Schema({
       type: Date,
       default: Date.now
     },
-    admin: {
-      type: Boolean,
-      default: false
+    role: {
+      type: String,
+      default: 'Participant'
     }
     
   },
@@ -60,14 +60,14 @@ const UserSchema = new Schema({
     });
   
   
-  UserSchema.virtual('password')
-    .set(function (password) {
-      if (password.length < 6) {
-        throw new Error('Password must be at least 6 characters.')
-      }
-      else {
-         UserSchema.methods.authenticate(password);      }
-    });
+  // UserSchema.virtual('password_hash')
+  //   .set(function (password) {
+  //     if (password.length < 6) {
+  //       throw new Error('Password must be at least 6 characters.')
+  //     }
+  //     else {
+  //        UserSchema.methods.authenticate(password);      }
+  //   });
   
  
   
